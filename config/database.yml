@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: 192.168.99.100
+  username: postgres
+  password: docker
+  pool: 5
+
+development:
+  <<: *default
+  database: rails_transactions_development
+
+test:
+  <<: *default
+  database: rails_transactions_test
