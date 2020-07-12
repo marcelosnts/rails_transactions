@@ -16,7 +16,7 @@ class TransactionsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @transaction.description
     fill_in "Title", with: @transaction.title
-    fill_in "Type", with: @transaction.type
+    fill_in "Transaction type", with: @transaction.transaction_type
     fill_in "Value", with: @transaction.value
     click_on "Create Transaction"
 
@@ -30,7 +30,7 @@ class TransactionsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @transaction.description
     fill_in "Title", with: @transaction.title
-    fill_in "Type", with: @transaction.type
+    fill_in "Transaction type", with: @transaction.transaction_type
     fill_in "Value", with: @transaction.value
     click_on "Update Transaction"
 

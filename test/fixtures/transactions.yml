@@ -2,12 +2,12 @@
 
 one:
   title: MyString
-  type: 1
+  transaction_type: MyString
   description: MyString
   value: 1.5
 
 two:
   title: MyString
-  type: 1
+  transaction_type: MyString
   description: MyString
   value: 1.5

@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Type</th>
+      <th>Transaction type</th>
       <th>Description</th>
       <th>Value</th>
       <th colspan="3"></th>
@@ -17,7 +17,7 @@
     <% @transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.title %></td>
-        <td><%= transaction.type %></td>
+        <td><%= transaction.transaction_type %></td>
         <td><%= transaction.description %></td>
         <td><%= transaction.value %></td>
         <td><%= link_to 'Show', transaction %></td>

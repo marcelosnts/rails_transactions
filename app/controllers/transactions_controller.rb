@@ -4,7 +4,11 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    if current_user
+      @transactions = Transaction.all
+    else
+      redirect_to login_path
+    end
   end
 
   # GET /transactions/1
@@ -69,6 +73,6 @@ class TransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:title, :type, :description, :value)
+      params.require(:transaction).permit(:title, :transaction_type, :description, :value)
     end
 end
