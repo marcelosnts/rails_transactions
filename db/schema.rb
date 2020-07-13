@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_145455) do
     t.string "transaction_type"
     t.string "description"
     t.float "value"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

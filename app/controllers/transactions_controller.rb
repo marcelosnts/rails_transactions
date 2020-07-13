@@ -1,8 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
-  # GET /transactions
-  # GET /transactions.json
   def index
     if current_user
       @transactions = Transaction.all
@@ -11,24 +9,19 @@ class TransactionsController < ApplicationController
     end
   end
 
-  # GET /transactions/1
-  # GET /transactions/1.json
   def show
   end
 
-  # GET /transactions/new
   def new
     @transaction = Transaction.new
   end
 
-  # GET /transactions/1/edit
   def edit
   end
 
-  # POST /transactions
-  # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
+    @transaction.user_id = current_user.id
 
     respond_to do |format|
       if @transaction.save
@@ -41,8 +34,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /transactions/1
-  # PATCH/PUT /transactions/1.json
   def update
     respond_to do |format|
       if @transaction.update(transaction_params)
@@ -55,8 +46,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-  # DELETE /transactions/1
-  # DELETE /transactions/1.json
   def destroy
     @transaction.destroy
     respond_to do |format|
@@ -64,15 +53,25 @@ class TransactionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  require 'csv'
+  def import
+    binding.pry
+    CSV.foreach(params['csv_file'].path, {headers: true, col_sep: ';'}) do |row|
+        @transaction = row.to_hash
+        @transaction['user_id'] = current_user.id
+        Transaction.create! @transaction
+    end
+
+    redirect_to root_url, notice: "Data imported!"
+  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_transaction
       @transaction = Transaction.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:title, :transaction_type, :description, :value)
+      params.require(:transaction).permit(:title, :transaction_type, :description, :value, :user_id)
     end
 end
