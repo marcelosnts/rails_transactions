@@ -2,11 +2,8 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user
-      @transactions = Transaction.all
-    else
-      redirect_to login_path
-    end
+    render json: @transactions = Transaction.all
+    # render json: {:transactions => Transaction.all}
   end
 
   def show
@@ -17,6 +14,7 @@ class TransactionsController < ApplicationController
   end
 
   def edit
+    render json: @transaction
   end
 
   def create
@@ -56,8 +54,7 @@ class TransactionsController < ApplicationController
   
   require 'csv'
   def import
-    binding.pry
-    CSV.foreach(params['csv_file'].path, {headers: true, col_sep: ';'}) do |row|
+    CSV.foreach(params['file'].path, {headers: true, col_sep: ';'}) do |row|
         @transaction = row.to_hash
         @transaction['user_id'] = current_user.id
         Transaction.create! @transaction

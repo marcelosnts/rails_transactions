@@ -1,8 +1,9 @@
 <div>
     <h1>Upload CSV</h1>
 
-    <%= form_tag import_transactions_path, multipart: true do %>
+    <%= react_component("upload/Index") %>
 
+    <%= form_tag import_transactions_path, multipart: true do %>
     <div>
         <%= file_field_tag :csv_file %>
         <%= submit_tag "Import transactions" %>
