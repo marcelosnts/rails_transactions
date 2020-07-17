@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   
-  # resources :users
+  resources :users, path: '/api/users'
   resources :sessions, only: [:new, :create, :destroy], path: '/api/sessions'
   resources :transactions, path: '/api/transactions' do
     collection {post :import}

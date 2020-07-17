@@ -6,7 +6,7 @@ export const Container = styled.ul`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #444;
+    color: #FFF;
     & + li {
       margin-top: 15px;
     }

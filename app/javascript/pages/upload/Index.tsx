@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import Header from '../../components/header/Index';
 import FileList from '../../components/fileList/Index';
 import Dropzone from '../../components/dropzone/Index';
 
-import { Container, Title, ImportFileContainer, Footer } from './styles';
+import { Container, ImportFileContainer, Footer } from './styles';
 
 import api from '../../services/api';
 
@@ -46,7 +47,8 @@ const Import: React.FC = () => {
   return (
     <>
       <Container>
-        <Title>Importar uma transação</Title>
+        <Header />
+        
         <ImportFileContainer>
           <Dropzone onUpload={submitFile} />
           {!!uploadedFiles.length && <FileList files={uploadedFiles} />}

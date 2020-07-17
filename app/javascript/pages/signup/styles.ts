@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100vh;
@@ -15,7 +15,7 @@ export const Content = styled.div`
   max-width: 700px;
 
   a {
-    padding-top: 32px;
+    padding-top: 64px;
     color: #fff;
     text-decoration: none;
     font-size: 16px;
@@ -26,17 +26,6 @@ export const Content = styled.div`
     &:hover {
       text-decoration: underline #ff872c;
     }
-  }
-`;
-
-const appearFromLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 `;
 
