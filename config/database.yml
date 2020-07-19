@@ -2,14 +2,14 @@ default: &default
   adapter: postgresql
   encoding: unicode
   # Docker development env
-  # host: 192.168.99.100
+  host: 192.168.99.100
   # Heroku development prev
-  host: localhost
+  # host: localhost
   username: postgres
   # Docker password
-  # password: docker
+  password: docker
   # Heroku password
-  password: 
+  # password: 
   pool: 5
 
 development:
