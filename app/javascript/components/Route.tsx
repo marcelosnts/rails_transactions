@@ -8,6 +8,7 @@ import {
 import { useAuth } from '../hooks/auth';
 
 interface RouteProps extends ReactDOMRouteProps {
+  exact: boolean;
   isPrivate?: boolean;
   component: React.FunctionComponent;
 }
