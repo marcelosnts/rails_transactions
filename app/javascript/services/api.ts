@@ -1,7 +1,7 @@
 import axios from 'axios-on-rails';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3333/api',
+  baseURL: 'https://rails-transactions.herokuapp.com/api',
 });
 
 export default api;
